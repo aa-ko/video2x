@@ -30,7 +30,7 @@ class Waifu2xConverter:
 
     def __init__(self, driver_settings, model_dir):
         self.driver_settings = driver_settings
-        self.driver_settings['model_dir'] = model_dir
+        self.driver_settings['model-dir'] = model_dir
         self.print_lock = threading.Lock()
 
     def upscale(self, input_directory, output_directory, scale_ratio, jobs, image_format, upscaler_exceptions):
@@ -55,7 +55,8 @@ class Waifu2xConverter:
             # models_rgb must be specified manually for waifu2x-converter-cpp
             # if it's not specified in the arguments, create automatically
             if self.driver_settings['model-dir'] is None:
-                self.driver_settings['model-dir'] = pathlib.Path(self.driver_settings['waifu2x_converter_path']) / 'models_rgb'
+                # TODO: I think this is wrong. The waifu2x_converter_path config key does not exist.
+                self.driver_settings['model-dir'] = pathlib.Path(self.driver_settings['path']) / 'models_rgb'
 
             # print thread start message
             self.print_lock.acquire()
@@ -64,7 +65,7 @@ class Waifu2xConverter:
 
             # list to be executed
             # initialize the list with waifu2x binary path as the first element
-            execute = [str(pathlib.Path(self.driver_settings['path']) / 'waifu2x-converter-cpp.exe')]
+            execute = [str(pathlib.Path(self.driver_settings['path']))]
 
             for key in self.driver_settings.keys():
 

@@ -21,7 +21,7 @@ waifu2x_caffe:
   crop_w:
   crop_h:
 waifu2x_converter:
-  path: C:\Users\K4YT3X\AppData\Local\video2x\waifu2x-converter-cpp
+  path: /usr/bin/waifu2x-converter-cpp
   output-format:
   png-compression:
   image-quality:
@@ -29,7 +29,7 @@ waifu2x_converter:
   disable-gpu:
   force-OpenCL:
   processor:
-  jobs:
+  jobs: 16
   model-dir:
   scale-ratio:
   noise-level: 3
@@ -52,7 +52,7 @@ anime4k:
   path: C:\Users\K4YT3X\AppData\Local\video2x\anime4k\Anime4K.jar
   java_path: C:\Program Files\Java\jdk-12.0.2\bin\java.exe
 ffmpeg:
-  ffmpeg_path: C:\Users\K4YT3X\AppData\Local\video2x\ffmpeg-latest-win64-static\bin
+  ffmpeg_path: /usr/bin
   video_to_frames:
     output_options:
       "-qscale:v":

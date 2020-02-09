@@ -4,6 +4,12 @@ frames/
 waifu2x-caffe/
 testvid.mp4
 
+# waifu2x-converter-cpp models
+models/
+
+# VS Code IDE config
+.vscode/
+
 # PyCharm
 .idea/
 
