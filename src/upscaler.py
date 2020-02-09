@@ -171,11 +171,17 @@ class Upscaler:
             progress_bar.start()
 
             w2.upscale(self.extracted_frames, self.upscaled_frames, self.scale_ratio, self.threads, self.image_format, self.upscaler_exceptions)
+
+            if len(self.upscaler_exceptions) != 0:
+                raise(self.upscaler_exceptions[0])
+
+            regex = re.compile(f'_\[.*-.*\]\[x(\d+(\.\d+)?)\]\.{self.image_format}')
             for image in [f for f in self.upscaled_frames.iterdir() if f.is_file()]:
-                renamed = re.sub(f'_\[.*-.*\]\[x(\d+(\.\d+)?)\]\.{self.image_format}', f'.{self.image_format}', str(image))
+                renamed = re.sub(regex, f'.{self.image_format}', str(image))
                 (self.upscaled_frames / image).rename(self.upscaled_frames / renamed)
 
             self.progress_bar_exit_signal = True
+                
             progress_bar.join()
             return
 
