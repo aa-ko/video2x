@@ -38,7 +38,7 @@ waifu2x_converter:
   output:
   input:
 waifu2x_ncnn_vulkan:
-  path: C:\Users\K4YT3X\AppData\Local\video2x\waifu2x-ncnn-vulkan\waifu2x-ncnn-vulkan
+  path: /usr/bin/waifu2x-ncnn-vulkan
   v:
   i:
   o:
